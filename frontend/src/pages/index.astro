@@ -1,0 +1,30 @@
+---
+import Layout from "../layouts/Layout.astro";
+import LinkCard from "../components/home/LinkCard.astro";
+---
+
+<Layout title="YEAH">
+  <header></header>
+  <main>
+    <section class="flex flex-col gap-2">
+      <h2>Service</h2>
+      <div
+        class="grid grid-cols-[repeat(auto-fit,_minmax(256px,_1fr))] items-center border-b border-b-surfaceContainer"
+      >
+        <LinkCard />
+        <LinkCard />
+        <LinkCard />
+        <LinkCard />
+        <LinkCard />
+      </div>
+    </section>
+  </main>
+  <footer class="text-right mt-6">
+    <h2 class="font-mono">YEAH</h2>
+    <p class="text-onSurfaceVariant text-xs font-mono">
+      YEt Another Homepage. Designed and created with <span class="font-sans"
+        >❤️</span
+      > by icekylin. View this project on Github.
+    </p>
+  </footer>
+</Layout>
