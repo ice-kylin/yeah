@@ -1,0 +1,15 @@
+---
+import IceCream from "@images/ice-cream.svg";
+import SearchBar from "./SearchBar.svelte";
+// noinspection ES6UnusedImports
+import {Image} from "astro:assets";
+---
+
+<div class="relative">
+    <Image
+            src={IceCream}
+            alt="searchbar background"
+            class={"absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"}
+    />
+    <SearchBar/>
+</div>

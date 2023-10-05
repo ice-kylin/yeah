@@ -1,25 +1,42 @@
+# 页面配置
+title: "YEAH"
+subtitle: "YEt Another Homepage."
+tab_title: "启始页"
+color: "#ffffff"
+
+# 消息配置
 message:
   type: "primary"
   title: "Hi, I'm a message!"
   content: "I'm a message content!"
 
-links:
+# 服务和链接配置
+groups:
   - name: "服务"
     items:
       - name: "PVE"
+        logo: !Emj "😊"
         url: "https://192.168.3.100:8006"
         description: "Proxmox Virtual Environment"
       - name: "DSM"
-        url: "https://192.168.3.109:5000"
+        logo: !Img "https://www.synology.com/favicon.ico"
+        url: "http://192.168.3.109:5000"
         description: "Synology DSM"
+      - name: "Huawei Router"
+        url: "http://192.168.3.1"
+        description: "华为路由器"
       - name: "iStoreOS"
         url: "http://192.168.3.101"
       - name: "Plex"
         url: "http://192.168.3.109:32400"
-        description: "Plex Media Server"
+        description: "Plex 媒体服务器"
       - name: "Jellyfin"
         url: "http://192.168.3.109:8096"
-        description: "Jellyfin Media Server"
+        description: "Jellyfin 媒体服务器"
+      - name: "Navidrome"
+        logo: !Emj "🎵"
+        url: "http://192.168.3.109:4533"
+        description: "音乐服务器"
       - name: "NAS 媒体工具"
         url: "http://192.168.3.109:3003"
         description: "NASTool"

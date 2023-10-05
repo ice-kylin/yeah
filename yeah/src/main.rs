@@ -1,14 +1,14 @@
 use std::fs;
 
-use axum::{Json, Router};
 use axum::routing::get;
+use axum::{Json, Router};
 use serde::{Deserialize, Serialize};
 use serde_yaml;
 use tower_http::cors::CorsLayer;
 
 #[derive(Deserialize, Serialize)]
 struct Config {
-    links: Vec<Group>,
+    groups: Vec<Group>,
 }
 
 #[derive(Deserialize, Serialize)]
@@ -35,7 +35,8 @@ enum Logo {
 
 #[tokio::main]
 async fn main() {
-    let app = Router::new().route("/", get(links))
+    let app = Router::new()
+        .route("/", get(links))
         .layer(CorsLayer::permissive());
 
     axum::Server::bind(&"0.0.0.0:3000".parse().unwrap())
@@ -45,9 +46,10 @@ async fn main() {
 }
 
 fn get_links() -> Vec<Group> {
-    let d: Config = serde_yaml::from_reader(fs::File::open("./config/config.yml").unwrap()).unwrap();
+    let d: Config =
+        serde_yaml::from_reader(fs::File::open("./config/config.yml").unwrap()).unwrap();
 
-    d.links
+    d.groups
 }
 
 async fn links() -> Json<Vec<Group>> {

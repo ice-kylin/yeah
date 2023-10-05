@@ -2,20 +2,20 @@
 import "../styles/global.css";
 
 interface Props {
-  title: string;
+    title: string;
 }
 
-const { title } = Astro.props;
+const {title} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en" data-theme="light" class="bg-background">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>{title}</title>
-  </head>
-  <body class="px-6 pt-4 pb-6 text-onSurface">
-    <slot />
-  </body>
+</head>
+<body class="px-6 pt-4 pb-6 text-onSurface">
+<slot/>
+</body>
 </html>

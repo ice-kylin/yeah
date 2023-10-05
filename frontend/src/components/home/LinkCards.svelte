@@ -1,17 +1,8 @@
 <script lang="ts">
     import axios from "axios";
     import LinkCard from "./LinkCard.svelte";
+    import type {Group} from "@src/types/config.ts";
 
-    interface Group {
-        name: string;
-        items: Item[];
-    }
-
-    interface Item {
-        name: string;
-        url: string;
-        description?: string;
-    }
 
     let promise = (async () => {
         try {
@@ -31,7 +22,7 @@
                 class="grid grid-cols-[repeat(auto-fit,_minmax(256px,_1fr))] items-center border-b border-b-outlineVariant border-dotted"
         >
             {#each group.items as item}
-                <LinkCard name={item.name} url={item.url} description={item.description}></LinkCard>
+                <LinkCard name={item.name} url={item.url} description={item.description} logo={item.logo}></LinkCard>
             {/each}
         </div>
         <div class="absolute w-0.5 h-full bg-background right-0 top-0"></div>
