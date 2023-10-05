@@ -6,7 +6,7 @@
 
     let promise = (async () => {
         try {
-            return (await axios.get<Group[]>("http://localhost:3000/")).data;
+            return (await axios.get<Group[]>("http://192.168.3.4:3000/")).data;
         } catch (e) {
             throw new Error("Failed to fetch groups");
         }

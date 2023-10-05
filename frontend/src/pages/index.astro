@@ -1,14 +1,16 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import LinkCards from "../components/home/LinkCards.svelte";
-import SearchBarWrapper from "../components/home/SearchBarWrapper.astro";
+import Layout from "@layouts/Layout.astro";
+import LinkCards from "@components/home/LinkCards.svelte";
+import SearchBarWrapper from "@components/home/SearchBarWrapper.astro";
+import Messages from "@components/home/Messages.svelte";
 ---
 
 <Layout title="YEAH">
     <header></header>
     <main>
         <SearchBarWrapper></SearchBarWrapper>
-        <section class="flex flex-col gap-4 relative">
+        <Messages></Messages>
+        <section class="flex flex-col gap-4 relative mt-6">
             <LinkCards client:visible></LinkCards>
         </section>
     </main>
