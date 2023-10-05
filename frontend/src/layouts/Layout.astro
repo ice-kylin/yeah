@@ -9,13 +9,13 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light" class="bg-background">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
   </head>
-  <body class="px-6 pt-4 pb-6">
+  <body class="px-6 pt-4 pb-6 text-onSurface">
     <slot />
   </body>
 </html>

@@ -110,19 +110,9 @@ module.exports = {
         surfaceDim: "rgb(var(--md-sys-color-surface-dim) / <alpha-value>)",
       },
       fontFamily: {
-        sans: [
-          "HarmonyOS Sans SC",
-          "Roboto",
-          "Noto Sans SC",
-          "Segoe UI Emoji",
-          ...defaultTheme.fontFamily.sans,
-        ],
-        serif: [
-          "KpRoman",
-          "Noto Serif SC",
-          ...defaultTheme.fontFamily.serif,
-          "Segoe UI Emoji",
-        ],
+        sans: [...defaultTheme.fontFamily.sans],
+        serif: [...defaultTheme.fontFamily.serif],
+        emj: ["Segoe UI Emoji"],
       },
     },
   },
