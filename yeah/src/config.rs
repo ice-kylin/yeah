@@ -5,8 +5,12 @@ use crate::message::Message;
 use crate::search::{Search, SearchConfig};
 use crate::statistic::StatisticConfig;
 
+const CONFIG_PATH: &str = "./config/config.yml";
+
 #[derive(Deserialize, Serialize)]
-struct AppConfig {
+pub struct AppConfig {
+    // IP 地址和端口（默认为 0.0.0.0:6666）
+    pub ip: Option<String>,
     // 标题
     title: Option<String>,
     // 副标题
@@ -22,7 +26,7 @@ struct AppConfig {
     // 消息配置
     messages: Option<Vec<Message>>,
     // 分组配置
-    groups: Option<Vec<Group>>,
+    pub groups: Option<Vec<Group>>,
 }
 
 #[derive(Deserialize, Serialize)]
@@ -65,8 +69,31 @@ type MonitorConfig = bool;
 
 type CompressionConfig = bool;
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, Clone)]
 pub enum Logo {
     Emj(String),
     Img(String),
+}
+
+impl AppConfig {
+    pub fn new() -> Result<Self, serde_yaml::Error> {
+        let rst: AppConfig = match std::fs::File::open(CONFIG_PATH) {
+            Ok(f) => serde_yaml::from_reader(f)?,
+            Err(_) => {
+                return Ok(AppConfig {
+                    ip: None,
+                    title: None,
+                    subtitle: None,
+                    tab_title: None,
+                    favicon: None,
+                    color: None,
+                    features: None,
+                    messages: None,
+                    groups: None,
+                });
+            }
+        };
+
+        Ok(rst)
+    }
 }

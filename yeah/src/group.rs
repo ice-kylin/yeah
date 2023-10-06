@@ -1,13 +1,18 @@
-use crate::config::Logo;
+use std::sync::Arc;
+
+use axum::extract::State;
+use axum::Json;
 use serde::{Deserialize, Serialize};
 
-#[derive(Deserialize, Serialize)]
+use crate::config::{AppConfig, Logo};
+
+#[derive(Deserialize, Serialize, Clone)]
 pub struct Group {
     name: String,
     items: Vec<Link>,
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, Clone)]
 struct Link {
     name: String,
     logo: Option<Logo>,
@@ -15,4 +20,8 @@ struct Link {
     description: Option<String>,
     blank: Option<bool>,
     target: Option<String>,
+}
+
+pub async fn groups_handler<'a>(State(config): State<Arc<AppConfig>>) -> Json<Vec<Group>> {
+    Json(config.groups.clone().unwrap())
 }
