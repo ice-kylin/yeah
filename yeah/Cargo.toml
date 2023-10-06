@@ -7,7 +7,13 @@ edition = "2021"
 
 [dependencies]
 axum = "0.6.20"
+env_logger = "0"
+exitcode = "1"
+human-panic = "1"
+hyper = { version = "0", features = ["full"] }
+jsonwebtoken = "8"
+log = "0"
 serde_yaml = "0.9.25"
-tokio = { version = "1", features = ["full"] }
 serde = { version = "1", features = ["derive"] }
+tokio = { version = "1", features = ["full"] }
 tower-http = { version = "0.4.4", features = ["cors"] }

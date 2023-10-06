@@ -26,7 +26,11 @@
             </div>
             <h3>{name}</h3>
             <p class="text-onSurfaceVariant text-xs">
-                {description}
+                {#if description !== null}
+                    {description}
+                {:else}
+                    &nbsp;
+                {/if}
             </p>
             <p class="text-outline text-xs font-mono overflow-hidden text-ellipsis whitespace-nowrap">
                 {url}
