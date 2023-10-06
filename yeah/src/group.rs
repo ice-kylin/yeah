@@ -6,13 +6,21 @@ use serde::{Deserialize, Serialize};
 
 use crate::config::{AppConfig, Logo};
 
-#[derive(Deserialize, Serialize, Clone)]
+#[derive(
+    Deserialize,
+    Serialize,
+    Clone, // Sometimes clone is needed :(
+)]
 pub struct Group {
     name: String,
     items: Vec<Link>,
 }
 
-#[derive(Deserialize, Serialize, Clone)]
+#[derive(
+    Deserialize,
+    Serialize,
+    Clone, // Sometimes clone is needed :(
+)]
 struct Link {
     name: String,
     logo: Option<Logo>,
@@ -22,6 +30,6 @@ struct Link {
     target: Option<String>,
 }
 
-pub async fn groups_handler(State(config): State<Arc<AppConfig>>) -> Json<Vec<Group>> {
+pub async fn get_groups(State(config): State<Arc<AppConfig>>) -> Json<Vec<Group>> {
     Json(config.groups.clone().unwrap())
 }

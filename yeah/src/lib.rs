@@ -9,7 +9,7 @@ use log::{error, info};
 use tower_http::cors;
 
 use crate::config::AppConfig;
-use crate::group::groups_handler;
+use crate::group::get_groups;
 
 mod config;
 mod group;
@@ -27,7 +27,7 @@ pub async fn run() {
 
     let config = get_config();
     let app = Router::new()
-        .route("/", get(groups_handler))
+        .route("/", get(get_groups))
         .with_state(config.clone())
         .layer(cors::CorsLayer::permissive());
     YeahServer::build(&config).serve(app).await;

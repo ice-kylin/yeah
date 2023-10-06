@@ -69,7 +69,11 @@ type MonitorConfig = bool;
 
 type CompressionConfig = bool;
 
-#[derive(Deserialize, Serialize, Clone)]
+#[derive(
+    Deserialize,
+    Serialize,
+    Clone, // Sometimes clone is needed :(
+)]
 pub enum Logo {
     Emj(String),
     Img(String),
