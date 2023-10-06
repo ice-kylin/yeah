@@ -22,6 +22,6 @@ struct Link {
     target: Option<String>,
 }
 
-pub async fn groups_handler<'a>(State(config): State<Arc<AppConfig>>) -> Json<Vec<Group>> {
+pub async fn groups_handler(State(config): State<Arc<AppConfig>>) -> Json<Vec<Group>> {
     Json(config.groups.clone().unwrap())
 }

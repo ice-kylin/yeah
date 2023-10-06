@@ -18,37 +18,8 @@ mod note;
 mod search;
 mod statistic;
 
-struct YeahBuilder {
+struct YeahServer {
     builder: Builder<AddrIncoming>,
-}
-
-impl YeahBuilder {
-    fn build(config: &Arc<AppConfig>) -> Self {
-        let ip = get_ip(config);
-
-        let builder = match Server::try_bind(&parse_ip(ip)) {
-            Ok(b) => {
-                info!("🚀 Server running at {}", ip);
-                b
-            }
-            Err(e) => {
-                error!("Server error: {}", e);
-                std::process::exit(exitcode::SOFTWARE);
-            }
-        };
-
-        YeahBuilder { builder }
-    }
-
-    async fn serve(self, app: Router) {
-        match self.builder.serve(app.into_make_service()).await {
-            Ok(_) => {}
-            Err(e) => {
-                error!("Server error: {}", e);
-                std::process::exit(exitcode::SOFTWARE);
-            }
-        }
-    }
 }
 
 pub async fn run() {
@@ -59,7 +30,7 @@ pub async fn run() {
         .route("/", get(groups_handler))
         .with_state(config.clone())
         .layer(cors::CorsLayer::permissive());
-    YeahBuilder::build(&config).serve(app).await;
+    YeahServer::build(&config).serve(app).await;
 
     info!("👋 Bye!");
 }
@@ -88,6 +59,34 @@ fn parse_ip(ip: &str) -> SocketAddr {
         Err(e) => {
             error!("IP address format error: {}", e);
             std::process::exit(exitcode::CONFIG);
+        }
+    }
+}
+impl YeahServer {
+    fn build(config: &Arc<AppConfig>) -> Self {
+        let ip = get_ip(config);
+
+        let builder = match Server::try_bind(&parse_ip(ip)) {
+            Ok(b) => {
+                info!("🚀 Server running at {}", ip);
+                b
+            }
+            Err(e) => {
+                error!("Server error: {}", e);
+                std::process::exit(exitcode::SOFTWARE);
+            }
+        };
+
+        YeahServer { builder }
+    }
+
+    async fn serve(self, app: Router) {
+        match self.builder.serve(app.into_make_service()).await {
+            Ok(_) => {}
+            Err(e) => {
+                error!("Server error: {}", e);
+                std::process::exit(exitcode::SOFTWARE);
+            }
         }
     }
 }
