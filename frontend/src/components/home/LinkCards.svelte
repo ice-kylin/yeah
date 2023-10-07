@@ -17,7 +17,7 @@
     <div></div>
 {:then groups}
     {#each groups as group}
-        <h2 class="px-6">{group.name}</h2>
+        <h2 class="px-6 font-medium">{group.name}</h2>
         <div
                 class="grid grid-cols-[repeat(auto-fit,_minmax(256px,_1fr))] items-center border-b border-b-outlineVariant border-dotted"
         >

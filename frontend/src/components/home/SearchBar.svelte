@@ -4,7 +4,7 @@
 </script>
 
 <div
-        class="bg-surfaceContainerHigh/60 backdrop-blur-lg rounded-lg max-w-3xl mx-auto my-64 px-3.5 py-2.5 flex items-center gap-3.5"
+        class="bg-surfaceContainerHigh/60 backdrop-blur-lg rounded-lg max-w-3xl mx-auto my-32 px-3.5 py-2.5 flex items-center gap-3.5 md:my-64"
 >
     <div class="text-primary">
         <Google/>

@@ -7,7 +7,7 @@ module.exports = {
         extend: {
             backgroundImage: {
                 "patten-primary": "radial-gradient(rgb(var(--md-sys-color-primary-container) / 1) 0.5px, rgb(var(--md-sys-color-background) / 0.6) 0.5px)",
-                "patten-surface": "radial-gradient(rgb(var(--md-sys-color-surface-container) / 1) 0.5px, rgb(var(--md-sys-color-background) / 0.6) 0.5px)",
+                "patten-surface": "radial-gradient(rgb(var(--md-sys-color-surface-container-high) / 1) 0.5px, rgb(var(--md-sys-color-background) / 0.6) 0.5px)",
             },
             boxShadow: {
                 1: [
@@ -115,16 +115,19 @@ module.exports = {
             },
             fontFamily: {
                 sans: [
-                    // "Roboto",
-                    // "Noto Sans SC",
-                    // "Segoe UI Emoji",
-                    ...defaultTheme.fontFamily.sans,
+                    "-apple-system",
+                    "BlinkMacSystemFont",
+                    "Helvetica Neue",
+                    "PingFang SC",
+                    "Microsoft YaHei",
+                    "Source Han Sans SC",
+                    "Noto Sans CJK SC",
+                    "WenQuanYi Micro Hei",
+                    "sans-serif",
+                    // ...defaultTheme.fontFamily.sans,
                 ],
                 serif: [
-                    // "KpRoman",
-                    // "Noto Serif SC",
                     ...defaultTheme.fontFamily.serif,
-                    // "Segoe UI Emoji",
                 ],
                 emj: ["Segoe UI Emoji"],
             },

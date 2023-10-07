@@ -12,7 +12,9 @@ use crate::config::{AppConfig, Logo};
     Clone, // Sometimes clone is needed :(
 )]
 pub struct Group {
+    // 分组名称
     name: String,
+    // 分组项目
     items: Vec<Link>,
 }
 
@@ -22,11 +24,17 @@ pub struct Group {
     Clone, // Sometimes clone is needed :(
 )]
 struct Link {
+    // 网址名称
     name: String,
+    // 网址图标
     logo: Option<Logo>,
+    // 网址链接
     url: String,
+    // 网址描述
     description: Option<String>,
+    // 网址是否在新窗口打开
     blank: Option<bool>,
+    // 自定义 target 属性
     target: Option<String>,
 }
 

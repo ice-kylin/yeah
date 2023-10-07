@@ -24,7 +24,7 @@
                     <p class="text-center font-emj">{logo.Emj}</p>
                 {/if}
             </div>
-            <h3>{name}</h3>
+            <h3 class="font-medium">{name}</h3>
             <p class="text-onSurfaceVariant text-xs">
                 {#if description !== null}
                     {description}
