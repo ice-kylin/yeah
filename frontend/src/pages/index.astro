@@ -3,15 +3,24 @@ import Layout from "@layouts/Layout.astro";
 import LinkCards from "@components/home/LinkCards.svelte";
 import SearchBarWrapper from "@components/home/SearchBarWrapper.astro";
 import Messages from "@components/home/Messages.svelte";
+import Date from "@components/home/Date.svelte";
+import Avatar from "@components/home/Avatar.svelte";
+import Weather from "@components/home/Weather.svelte";
+import AvatarGroup from "@components/home/AvatarGroup.svelte";
 ---
 
 <Layout title="YEAH">
-    <header></header>
+    <header class="flex items-center gap-x-3.5">
+        <AvatarGroup client:only="svelte"></AvatarGroup>
+        <Date client:only="svelte"></Date>
+        <Weather client:only="svelte"></Weather>
+        <Avatar client:only="svelte"></Avatar>
+    </header>
     <main>
         <SearchBarWrapper></SearchBarWrapper>
         <Messages></Messages>
         <section class="flex flex-col gap-4 relative mt-6">
-            <LinkCards client:visible></LinkCards>
+            <LinkCards client:only="svelte"></LinkCards>
         </section>
     </main>
     <footer class="text-right mt-6">

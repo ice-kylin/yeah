@@ -4,16 +4,17 @@
     import type {Group} from "@src/types/config.ts";
 
 
-    let promise = (async () => {
+    let groups = (async () => {
         try {
             return (await axios.get<Group[]>("http://192.168.3.4:3000/")).data;
         } catch (e) {
-            throw new Error("Failed to fetch groups");
+            console.error(e);
+            throw new Error("Failed to get groups data: " + e);
         }
     })();
 </script>
 
-{#await promise}
+{#await groups}
     <div></div>
 {:then groups}
     {#each groups as group}
