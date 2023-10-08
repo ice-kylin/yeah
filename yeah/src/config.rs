@@ -7,7 +7,7 @@ use crate::statistic::StatisticConfig;
 
 const CONFIG_PATH: &str = "./config/config.yml";
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize)]
 pub struct AppConfig {
     // IP 地址和端口（默认为 0.0.0.0:6666）
     pub ip: Option<String>,
@@ -69,19 +69,9 @@ type MonitorConfig = bool;
 
 type CompressionConfig = bool;
 
-#[derive(
-    Deserialize,
-    Serialize,
-    Clone, // Sometimes clone is needed :(
-)]
-pub enum Logo {
-    Emj(String),
-    Img(String),
-}
-
 impl AppConfig {
     pub fn new() -> Result<Self, serde_yaml::Error> {
-        let rst: AppConfig = match std::fs::File::open(CONFIG_PATH) {
+        Ok(match std::fs::File::open(CONFIG_PATH) {
             Ok(f) => serde_yaml::from_reader(f)?,
             Err(_) => {
                 return Ok(AppConfig {
@@ -96,8 +86,6 @@ impl AppConfig {
                     groups: None,
                 });
             }
-        };
-
-        Ok(rst)
+        })
     }
 }

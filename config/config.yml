@@ -10,83 +10,116 @@ message:
   title: "Hi, I'm a message!"
   content: "I'm a message content!"
 
-# 服务和链接配置
+# 服务配置
+regexp:
+  - &local '^192\.168\.3\..+'
+  - &both '^192\.168\.3\..+|^10\..*'
+
 groups:
   - name: "服务"
     items:
-      - name: "PVE"
+      - !Link
+        name: "PVE"
         logo: !Emj "🐧"
-        url: "https://192.168.3.100:8006"
+        href: !Rules
+          *local : "https://192.168.3.100:8006"
         description: "Proxmox Virtual Environment"
-      - name: "DSM"
+      - !Link
+        name: "DSM"
         logo: !Emj "💾"
-        url: "http://192.168.3.109:5000"
+        href: !Rules
+          *both : "http://${host}:5000"
         description: "Synology DSM"
-      - name: "Huawei Router"
+      - !Link
+        name: "Huawei Router"
         logo: !Emj "📶"
-        url: "http://192.168.3.1"
+        href: !Rules
+          *local : "http://192.168.3.1"
+        hide: True
         description: "华为路由器"
-      - name: "iStoreOS"
+      - !Link
+        name: "iStoreOS"
         logo: !Emj "🧭"
-        url: "http://192.168.3.101"
+        href: !Rules
+          *local : "http://192.168.3.101"
         description: "旁路由"
-      - name: "Plex"
+      - !Link
+        name: "Plex"
         logo: !Emj "🎬"
-        url: "http://192.168.3.109:32400"
+        href: !Rules
+          *both : "http://${host}:32400"
         description: "Plex 媒体服务器"
-      - name: "Jellyfin"
+      - !Link
+        name: "Jellyfin"
         logo: !Emj "🎞️"
-        url: "http://192.168.3.109:8096"
+        href: !Rules
+          *both : "http://${host}:8096"
         description: "Jellyfin 媒体服务器"
-      - name: "Navidrome"
+      - !Link
+        name: "Navidrome"
         logo: !Emj "🎵"
-        url: "http://192.168.3.109:4533"
+        href: !Rules
+          *both : "http://${host}:4533"
         description: "音乐服务器"
-      - name: "NAS 媒体工具"
+      - !Link
+        name: "NAS 媒体工具"
         logo: !Emj "🛠️"
-        url: "http://192.168.3.109:3003"
+        href: !Rules
+          *both : "http://${host}:3003"
         description: "NASTool"
-      - name: "qBittorrent"
+      - !Link
+        name: "qBittorrent"
         logo: !Emj "🌐"
-        url: "http://192.168.3.109:8085"
+        href: !Rules
+          *both : "http://${host}:8085"
         description: "开源、自由的 BitTorrent 客户端"
-      - name: "AdGuard Home"
+      - !Link
+        name: "AdGuard Home"
         logo: !Emj "🛡"
-        url: "http://192.168.3.101:3000"
+        href: !Rules
+          *local : "http://192.168.3.101:3000"
         description: "广告拦截和隐私保护"
   - name: "常用"
     items:
-      - name: "哔哩哔哩"
+      - !Link
+        name: "哔哩哔哩"
         logo: !Emj "📹"
-        url: "https://www.bilibili.com"
+        href: !Url "https://www.bilibili.com"
         description: "BiliBili"
-      - name: "YouTube"
+      - !Link
+        name: "YouTube"
         logo: !Emj "📺"
-        url: "https://www.youtube.com"
+        href: !Url "https://www.youtube.com"
         description: "油管"
-      - name: "GitHub"
+      - !Link
+        name: "GitHub"
         logo: !Emj "🐙"
-        url: "https://github.com"
+        href: !Url "https://github.com"
         description: "代码托管平台"
-      - name: "Anyway.FM"
+      - !Link
+        name: "Anyway.FM"
         logo: !Emj "📻"
-        url: "https://anyway.fm/about"
+        href: !Url "https://anyway.fm/about"
         description: "安妮薇电台"
   - name: "关于项目"
     items:
-      - name: "源代码"
+      - !Link
+        name: "源代码"
         logo: !Emj "📦"
-        url: "https://github.com/ice-kylin/yeah"
+        href: !Url "https://github.com/ice-kylin/yeah"
         description: "GitHub"
-      - name: "文档"
+      - !Link
+        name: "文档"
         logo: !Emj "📖"
-        url: "https://github.com/ice-kylin/yeah/wiki"
+        href: !Url "https://github.com/ice-kylin/yeah/wiki"
         description: "GitHub Wiki"
-      - name: "反馈"
+      - !Link
+        name: "反馈"
         logo: !Emj "🐛"
-        url: "https://github.com/ice-kylin/yeah/issues"
+        href: !Url "https://github.com/ice-kylin/yeah/issues"
         description: "GitHub Issues"
-      - name: "Buy Me A Coffee"
+      - !Link
+        name: "Buy Me A Coffee"
         logo: !Emj "☕️"
-        url: "https://www.buymeacoffee.com/icekylin"
+        href: !Url "https://www.buymeacoffee.com/icekylin"
         description: "如果你喜欢这个项目，可以请我喝杯咖啡~"

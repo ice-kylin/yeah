@@ -1,21 +1,23 @@
 use std::net::SocketAddr;
 use std::sync::Arc;
 
-use axum::routing::get;
 use axum::{Router, Server};
-use hyper::server::conn::AddrIncoming;
+use axum::routing::get;
 use hyper::server::Builder;
+use hyper::server::conn::AddrIncoming;
 use log::{error, info};
 use tower_http::cors;
 
 use crate::config::AppConfig;
 use crate::group::get_groups;
 
+mod common;
 mod config;
 mod group;
 mod message;
 mod note;
 mod search;
+mod service;
 mod statistic;
 
 struct YeahServer {
@@ -30,6 +32,7 @@ pub async fn run() {
         .route("/", get(get_groups))
         .with_state(config.clone())
         .layer(cors::CorsLayer::permissive());
+
     YeahServer::build(&config).serve(app).await;
 
     info!("👋 Bye!");
@@ -62,6 +65,7 @@ fn parse_ip(ip: &str) -> SocketAddr {
         }
     }
 }
+
 impl YeahServer {
     fn build(config: &Arc<AppConfig>) -> Self {
         let ip = get_ip(config);
