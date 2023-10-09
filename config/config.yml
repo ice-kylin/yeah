@@ -13,7 +13,8 @@ message:
 # 服务配置
 regexp:
   - &local '^192\.168\.3\..+'
-  - &both '^192\.168\.3\..+|^10\..*'
+  - &other '^100\..*'
+#  - &both '^192\.168\.3\..+|^100\..*'
 
 groups:
   - name: "服务"
@@ -28,7 +29,8 @@ groups:
         name: "DSM"
         logo: !Emj "💾"
         href: !Rules
-          *both : "http://${host}:5000"
+          *local : "http://192.168.3.109:5000"
+          *other : "http://100.103.48.134:5000"
         description: "Synology DSM"
       - !Link
         name: "Huawei Router"
@@ -47,31 +49,36 @@ groups:
         name: "Plex"
         logo: !Emj "🎬"
         href: !Rules
-          *both : "http://${host}:32400"
+          *local : "http://192.168.3.109:32400"
+          *other : "http://100.103.48.134:32400"
         description: "Plex 媒体服务器"
       - !Link
         name: "Jellyfin"
         logo: !Emj "🎞️"
         href: !Rules
-          *both : "http://${host}:8096"
+          *local : "http://192.168.3.109:8096"
+          *other : "http://100.103.48.134:8096"
         description: "Jellyfin 媒体服务器"
       - !Link
         name: "Navidrome"
         logo: !Emj "🎵"
         href: !Rules
-          *both : "http://${host}:4533"
+          *local : "http://192.168.3.109:4533"
+          *other : "http://100.103.48.134:4533"
         description: "音乐服务器"
       - !Link
         name: "NAS 媒体工具"
         logo: !Emj "🛠️"
         href: !Rules
-          *both : "http://${host}:3003"
+          *local : "http://192.168.3.109:3003"
+          *other : "http://100.103.48.134:3003"
         description: "NASTool"
       - !Link
         name: "qBittorrent"
         logo: !Emj "🌐"
         href: !Rules
-          *both : "http://${host}:8085"
+          *local : "http://192.168.3.109:8085"
+          *other : "http://100.103.48.134:8085"
         description: "开源、自由的 BitTorrent 客户端"
       - !Link
         name: "AdGuard Home"
