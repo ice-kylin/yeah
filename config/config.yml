@@ -5,16 +5,15 @@ tab_title: "启始页"
 color: "#ffffff"
 
 # 消息配置
-message:
-  type: "primary"
-  title: "Hi, I'm a message!"
-  content: "I'm a message content!"
+messages:
+  - msg_type: "Primary"
+    title: "👋 Hi, I'm a message!"
+    content: "I'm a message content!"
 
 # 服务配置
 regexp:
   - &local '^192\.168\.3\..+'
   - &other '^100\..*'
-#  - &both '^192\.168\.3\..+|^100\..*'
 
 groups:
   - name: "服务"

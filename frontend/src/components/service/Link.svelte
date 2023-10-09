@@ -6,10 +6,10 @@
     export let link: Link;
 
     $: href = getHref(link.href);
-    // $: hide = link.hide && href === undefined;
+    $: hide = link.hide && href === undefined;
 </script>
 
-<a {href} rel="noopener noreferrer" target="_blank">
+<a {href} rel="noopener noreferrer" target="_blank" class:hidden={hide}>
     <div
             class="py-4 border-t border-dotted border-t-outlineVariant hover:bg-patten-surface bg-[length:2px_2px] transition-colors"
     >
@@ -26,7 +26,7 @@
                 {/if}
             </div>
             <h3 class="font-medium">{link.name}</h3>
-            <p class="text-onSurfaceVariant text-xs">
+            <p class="text-onSurfaceVariant text-xs overflow-hidden text-ellipsis whitespace-nowrap">
                 {#if link.description !== null}
                     {link.description}
                 {:else}

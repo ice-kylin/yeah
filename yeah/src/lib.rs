@@ -10,6 +10,7 @@ use tower_http::cors;
 
 use crate::config::AppConfig;
 use crate::group::get_groups;
+use crate::message::get_message;
 
 mod common;
 mod config;
@@ -30,6 +31,7 @@ pub async fn run() {
     let config = get_config();
     let app = Router::new()
         .route("/", get(get_groups))
+        .route("/message", get(get_message))
         .with_state(config.clone())
         .layer(cors::CorsLayer::permissive());
 

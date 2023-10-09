@@ -24,7 +24,7 @@ pub struct AppConfig {
     // 功能配置
     features: Option<FeaturesConfig>,
     // 消息配置
-    messages: Option<Vec<Message>>,
+    pub messages: Option<Vec<Message>>,
     // 分组配置
     pub groups: Option<Vec<Group>>,
 }

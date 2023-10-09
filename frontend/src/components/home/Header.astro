@@ -1,0 +1,13 @@
+---
+import Avatar from "./Avatar.svelte";
+import AvatarGroup from "./AvatarGroup.svelte";
+import Weather from "./Weather.svelte";
+import Date from "./Date.svelte";
+---
+
+<header class="flex items-center gap-x-3.5">
+    <AvatarGroup client:only="svelte"/>
+    <Date client:only="svelte"/>
+    <Weather client:only="svelte"/>
+    <Avatar client:only="svelte"/>
+</header>

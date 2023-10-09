@@ -1,0 +1,11 @@
+---
+import Messages from "./Messages.svelte";
+import SearchBarWrapper from "./SearchBarWrapper.astro";
+import LinkCards from "./Groups.svelte";
+---
+
+<main>
+    <SearchBarWrapper/>
+    <Messages client:only="svelte"/>
+    <LinkCards client:only="svelte"/>
+</main>
